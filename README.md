@@ -9,6 +9,7 @@
   8) Запускать проект
   9) Создать Item через админку или через shell
   10) Тестировать ендпойнты(endpoints)
+  
   ENDPOINTS:
       success/
       cancel/
