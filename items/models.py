@@ -7,6 +7,9 @@ class Item(models.Model):
     description = models.TextField()
     price = models.DecimalField(max_digits=14, decimal_places=2)
 
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
     def get_absolute_url(self):
         return reverse('view_item', kwargs={'pk': self.pk})
 
