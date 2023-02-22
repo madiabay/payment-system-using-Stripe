@@ -21,9 +21,9 @@ from items import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('items/', views.ItemsView.as_view(), name='items'),
     path('success/', views.SuccessView.as_view(), name='success'),
     path('cancel/', views.CancelView.as_view(), name='cancel'),
-    path('', views.ProductLandingPageView.as_view(), name='landing-page'),
-    path('create-checkout-session/', views.create_checkout_session),
-    # path('create-checkout-session/<pk>/', views.CreateCheckoutSessionView.as_view(), name='create-checkout-session'),
+    path('items/<int:pk>/', views.DetailItem.as_view(), name='view_item'),
+    path('buy/<int:item_id>/', views.create_checkout_session, name='buy'),
 ]

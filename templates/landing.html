@@ -16,10 +16,10 @@
         /> {% endcomment %}
         <div class="description">
           <h3>{{ item.name }}</h3>
-          <h5>$ {{ item.price }}</h5>
+          <h5>U.S. cents -> {{ item.price }}</h5>
         </div>
       </div>
-      <button type="button" id="checkout-button">Checkout</button>
+      <button type="button" id="checkout-button">Buy</button>
     </section>
     {% csrf_token %}
   </body>
@@ -28,7 +28,7 @@
     var stripe = Stripe("{{ STRIPE_PUBLIC_KEY }}");
 
     document.querySelector("#checkout-button").addEventListener("click", () => {
-      fetch("/create-checkout-session/")
+      fetch("{% url 'buy' item.id %}")
       .then((result) => { return result.json(); })
       .then((data) => {
         console.log(data);

@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 
 class Item(models.Model):
@@ -6,5 +7,8 @@ class Item(models.Model):
     description = models.TextField()
     price = models.DecimalField(max_digits=14, decimal_places=2)
 
+    def get_absolute_url(self):
+        return reverse('view_item', kwargs={'pk': self.pk})
+
     def __str__(self) -> str:
-        return str(self.name)
+        return f'{self.name}'
