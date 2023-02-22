@@ -19,7 +19,7 @@ class ProductLandingPageView(TemplateView):
     template_name = 'landing.html'
 
     def get_context_data(self, **kwargs):
-        item = models.Item.objects.get(id=2)
+        item = models.Item.objects.get(id=1)
         context = super(ProductLandingPageView, self).get_context_data(**kwargs)
         context.update({
             'item': item,
@@ -40,20 +40,17 @@ def create_checkout_session(request):
                 cancel_url=domain_url + 'cancelled/',
                 payment_method_types=['card'],
                 mode='payment',
-                # line_items=[
-                #     {
-                #         'name': item.name,
-                #         'amount': item.price,
-                #     }
                 line_items=[
                     {
                         'price_data': {
                             'currency': 'usd',
-                            'unit_amount': 'fff', # item.price,
-                            'name': 'sss', # item.name,
+                            'product_data': {
+                                'name': 'T-Shirt',
+                            },
+                            'unit_amount': 2000,
                         },
                         'quantity': 1,
-                    },
+                    }
                 ]
             )
             return JsonResponse({'sessionId': checkout_session['id']})
