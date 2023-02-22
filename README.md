@@ -1,3 +1,7 @@
+Из бонусных задач реализован:
+  1) environment variables (с помощью пакета django-environ)
+  2) Просмотр Django Моделей в Django Admin панели
+
 Описание запуска:
   1) git clone (repos)
   2) Создать виртуальное окружение
